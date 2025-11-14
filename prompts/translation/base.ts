@@ -18,6 +18,12 @@ export default function (targetLang: TranslationTargetLocale): string {
         - IMPORTANT: Respond ONLY with the translated text. Do not add explanations, questions, or apologies.
         - IMPORTANT: If you need clarification, respond with the original text unchanged rather than asking questions.
 
+        Additional general translation rules:
+        - Capitalize the first letter of UI labels, buttons, and standalone status words when appropriate for the target language.
+        - Maintain consistent capitalization conventions across similar UI elements.
+        - Acronyms should be preserved unless the target language has a widely accepted localized equivalent.
+        - Follow language-specific typographic rules where applicable (e.g., spacing before punctuation marks such as “:” or “?” in some languages).
+
         Treat the following words and phrases as proper nouns which should never be translated:
 
         - Bill.com
