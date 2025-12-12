@@ -1405,6 +1405,7 @@ const translations = {
             workflows: 'This report may now be subject to a different <strong>approval workflow.</strong>',
         },
         changeWorkspace: 'Change workspace',
+        // @context Past-tense status label indicating that a value has already been set, not an action button.
         set: 'set',
         changed: 'changed',
         removed: 'removed',
@@ -1430,6 +1431,7 @@ const translations = {
         startTime: 'Start time',
         endTime: 'End time',
         deleteSubrate: 'Delete subrate',
+        // @context “Subrate” refers to a secondary reimbursement rate that can be deleted.
         deleteSubrateConfirmation: 'Are you sure you want to delete this subrate?',
         quantity: 'Quantity',
         subrateSelection: 'Select a subrate and enter a quantity.',
@@ -1465,6 +1467,7 @@ const translations = {
                 markedAsResolved: 'marked the rejection reason as resolved',
             },
         },
+        // @context Plural action button label used to move multiple expenses at once.
         moveExpenses: () => ({one: 'Move expense', other: 'Move expenses'}),
         changeApprover: {
             title: 'Change approver',
@@ -1500,6 +1503,7 @@ const translations = {
             header: 'Select details',
             pageTitle: 'Select the details you want to keep:',
             noDifferences: 'No differences found between the transactions',
+            // @context Generic error message asking the user to make a selection; article is intentionally omitted so it works with any field name.
             pleaseSelectError: ({field}: {field: string}) => {
                 const article = StringUtils.startsWithVowel(field) ? 'an' : 'a';
                 return `Please select ${article} ${field}`;
@@ -1514,6 +1518,7 @@ const translations = {
         },
     },
     share: {
+        // @context CTA used to share content into the Expensify app (integration target), not to external apps.
         shareToExpensify: 'Share to Expensify',
         messageInputLabel: 'Message',
     },
@@ -1529,6 +1534,7 @@ const translations = {
     },
     loginField: {
         numberHasNotBeenValidated: "The number hasn't been validated. Click the button to resend the validation link via text.",
+        // @context For email-based logins, the validation link is re-sent via email (not SMS or text).
         emailHasNotBeenValidated: "The email hasn't been validated. Click the button to resend the validation link via text.",
     },
     avatarWithImagePicker: {
@@ -1561,8 +1567,11 @@ const translations = {
                 switch (actorType) {
                     case CONST.NEXT_STEP.ACTOR_TYPE.CURRENT_USER:
                         return `Waiting for <strong>you</strong> to add expenses.`;
+                    // @context Here “expenses” refers specifically to expense reports, not general day-to-day spending.
                     case CONST.NEXT_STEP.ACTOR_TYPE.OTHER_USER:
                         return `Waiting for <strong>${actor}</strong> to add expenses.`;
+
+                    // @context Same as OTHER_USER: “expenses” refers to expense reports that an administrator must add.
                     case CONST.NEXT_STEP.ACTOR_TYPE.UNSPECIFIED_ADMIN:
                         return `Waiting for an admin to add expenses.`;
                 }
@@ -1658,6 +1667,7 @@ const translations = {
         eta: {
             [CONST.NEXT_STEP.ETA_KEY.SHORTLY]: 'shortly',
             [CONST.NEXT_STEP.ETA_KEY.TODAY]: 'later today',
+            // @context ETA referring to the upcoming Sunday of the current week, not a generic Sunday.
             [CONST.NEXT_STEP.ETA_KEY.END_OF_WEEK]: 'on Sunday',
             [CONST.NEXT_STEP.ETA_KEY.SEMI_MONTHLY]: 'on the 1st and 16th of each month',
             [CONST.NEXT_STEP.ETA_KEY.LAST_BUSINESS_DAY_OF_MONTH]: 'on the last business day of the month',
@@ -1805,6 +1815,7 @@ const translations = {
             results: 'Results',
             releaseOptions: 'Release options',
             testingPreferences: 'Testing preferences',
+            // @context Refers to using a staging/preproduction server environment for testing, not a production server.
             useStagingServer: 'Use Staging Server',
             forceOffline: 'Force offline',
             simulatePoorConnection: 'Simulate poor internet connection',
@@ -2496,6 +2507,7 @@ const translations = {
                 title: ({testDriveURL}) => `Take a [test drive](${testDriveURL})`,
                 description: ({testDriveURL}) => `Take us for a [test drive](${testDriveURL}) and get your team *3 free months of Expensify!*`,
             },
+            // @context Explains that the user will initially be set as the default approver for expenses in this workspace, but this role can later be assigned to another administrator.
             addExpenseApprovalsTask: {
                 title: 'Add expense approvals',
                 description: ({workspaceMoreFeaturesLink}) =>
@@ -2580,9 +2592,12 @@ const translations = {
                     '\n' +
                     'And you’re done! Yep, it’s that easy.',
             },
+            // @context Onboarding task title for connecting accounting software to the workspace.
             addAccountingIntegrationTask: {
                 title: ({integrationName, workspaceAccountingLink}) =>
                     `Connect${integrationName === CONST.ONBOARDING_ACCOUNTING_MAPPING.other ? '' : ' to'} [${integrationName === CONST.ONBOARDING_ACCOUNTING_MAPPING.other ? 'your' : ''} ${integrationName}](${workspaceAccountingLink})`,
+                // @context Describes connecting an accounting integration so expenses can be coded and synced automatically.
+                // @context Link label that takes the user directly to the workspace’s accounting settings page.
                 description: ({integrationName, workspaceAccountingLink}) =>
                     `Connect ${integrationName === CONST.ONBOARDING_ACCOUNTING_MAPPING.other ? 'your' : 'to'} ${integrationName} for automatic expense coding and syncing that makes month-end close a breeze.\n` +
                     '\n' +
@@ -2718,6 +2733,7 @@ const translations = {
         testDrive: {
             name: ({testDriveURL}: {testDriveURL?: string}) => (testDriveURL ? `Take a [test drive](${testDriveURL})` : 'Take a test drive'),
             embeddedDemoIframeTitle: 'Test Drive',
+            // @context Label for a fake receipt used in an in-app product demo.
             employeeFakeReceipt: {
                 description: 'My test drive receipt!',
             },
@@ -2729,6 +2745,7 @@ const translations = {
                 "# Your free trial has started! Let's get you set up.\n👋 Hey there, I'm your Expensify setup specialist. Now that you've created a workspace, make the most of your 30-day free trial by following the steps below!",
             onboardingTrackWorkspaceMessage:
                 '# Let’s get you set up\n👋 I’m here to help! To get you started, I’ve tailored your workspace settings for sole proprietors and similar businesses. You can adjust your workspace by clicking the link below!\n\nHere’s how to track your spend in a few clicks:',
+            // @context Refers to splitting expenses/bills with friends, not sharing notes or messages.
             onboardingChatSplitMessage: 'Splitting bills with friends is as easy as sending a message. Here’s how.',
             onboardingAdminMessage: "Learn how to manage your team's workspace as an admin and submit your own expenses.",
             onboardingLookingAroundMessage:
@@ -3523,15 +3540,19 @@ const translations = {
             passenger: 'Passenger',
             layover: ({layover}: FlightLayoverParams) => `<muted-text-label>You have a <strong>${layover} layover</strong> before this flight</muted-text-label>`,
             takeOff: 'Take-off',
+            // @context In the travel module, “Landing” refers to the plane’s landing/arrival event, not a website landing page.
             landing: 'Landing',
             seat: 'Seat',
             class: 'Cabin Class',
             recordLocator: 'Record locator',
+            
             cabinClasses: {
                 unknown: 'Unknown',
                 economy: 'Economy',
                 premiumEconomy: 'Premium Economy',
+                // @context Cabin class label for Business class flights.
                 business: 'Business',
+                // @context Cabin class label for First class flights.
                 first: 'First',
             },
         },
@@ -3539,6 +3560,7 @@ const translations = {
         hotelDetails: {
             guest: 'Guest',
             checkIn: 'Check-in',
+            // @context Hotel stay details: label for the check-out/departure time.
             checkOut: 'Check-out',
             roomType: 'Room type',
             cancellation: 'Cancellation policy',
@@ -3616,6 +3638,7 @@ const translations = {
                 `Your ticket for flight ${airlineCode} (${origin} → ${destination}) on ${startDate} has been voided.`,
             ticketRefunded: ({airlineCode, origin, destination, startDate}: FlightParams) =>
                 `Your ticket for flight ${airlineCode} (${origin} → ${destination}) on ${startDate} has been refunded or exchanged.`,
+            // @context Flight cancellation notification; ensure the date placeholder is rendered cleanly.
             flightCancelled: ({airlineCode, origin, destination, startDate}: FlightParams) =>
                 `Your flight ${airlineCode} (${origin} → ${destination}) on ${startDate}} has been canceled by the airline.`,
             flightScheduleChangePending: ({airlineCode}: AirlineParams) => `The airline has proposed a schedule change for flight ${airlineCode}; we are awaiting confirmation.`,
@@ -3639,6 +3662,7 @@ const translations = {
         flightTo: 'Flight to',
         trainTo: 'Train to',
         carRental: ' car rental',
+        // @context Fragment concatenated with a city name (e.g. “1 night in Paris”).
         nightIn: 'night in',
         nightsIn: 'nights in',
     },
@@ -3683,6 +3707,7 @@ const translations = {
             issueAndManageCards: 'Issue and manage cards',
             reconcileCards: 'Reconcile cards',
             selectAll: 'Select all',
+            // @context Pluralization helper: adjective must agree with count when greater than one.
             selected: () => ({
                 one: '1 selected',
                 other: (count: number) => `${count} selected`,
@@ -4692,6 +4717,7 @@ const translations = {
             settleBalance: 'Settle balance',
             cardLimit: 'Card limit',
             remainingLimit: 'Remaining limit',
+            // @context User-initiated action to request a higher card limit.
             requestLimitIncrease: 'Request limit increase',
             remainingLimitDescription:
                 'We consider a number of factors when calculating your remaining limit: your tenure as a customer, the business-related information you provided during signup, and the available cash in your business bank account. Your remaining limit can fluctuate on a daily basis.',
@@ -5002,6 +5028,7 @@ const translations = {
             nameInputSubtitle: 'Choose a name for the report field.',
             typeInputSubtitle: 'Choose what type of report field to use.',
             initialValueInputSubtitle: 'Enter a starting value to show in the report field.',
+            // @context Field label meaning “values for this list,” not an action.
             listValuesInputSubtitle: 'These values will appear in your report field dropdown. Enabled values can be selected by members.',
             listInputSubtitle: 'These values will appear in your report field list. Enabled values can be selected by members.',
             deleteValue: 'Delete value',
@@ -5029,9 +5056,11 @@ const translations = {
             genericFailureMessage: 'An error occurred while updating the report field. Please try again.',
         },
         tags: {
+            // @context Label for the name of a categorization tag.
             tagName: 'Tag name',
             requiresTag: 'Members must tag all expenses',
             trackBillable: 'Track billable expenses',
+            // @context Label for a user-defined tag name.
             customTagName: 'Custom tag name',
             enableTag: 'Enable tag',
             enableTags: 'Enable tags',
@@ -5081,6 +5110,7 @@ const translations = {
             },
             tagLevel: {
                 singleLevel: 'Single level of tags',
+                // @context Refers to multi-level tag structures.
                 multiLevel: 'Multi-level tags',
             },
             switchSingleToMultiLevelTagWarning: {
@@ -5101,6 +5131,7 @@ const translations = {
             },
             importedTagsMessage: ({columnCounts}: ImportedTagsMessageParams) =>
                 `We found *${columnCounts} columns* in your spreadsheet. Select *Name* next to the column that contains tags names. You can also select *Enabled* next to the column that sets tags status.`,
+           // @context Error shown when attempting to delete or disable all tags.
             cannotDeleteOrDisableAllTags: {
                 title: 'Cannot delete or disable all tags',
                 description: `At least one tag must remain enabled because your workspace requires tags.`,
@@ -5113,7 +5144,9 @@ const translations = {
                 title: 'Cannot make tag list required',
                 description: 'You can only make a tag list required if your policy has multiple tag levels configured.',
             },
+            
             tagCount: () => ({
+                // @context Singular count label for exactly one tag.
                 one: '1 Tag',
                 other: (count: number) => `${count} Tags`,
             }),
@@ -5192,6 +5225,7 @@ const translations = {
         },
         people: {
             genericFailureMessage: 'An error occurred removing a member from the workspace, please try again',
+            // @context Confirmation prompt for removing multiple members.
             removeMembersPrompt: ({memberName}: {memberName: string}) => ({
                 one: `Are you sure you want to remove ${memberName}?`,
                 other: 'Are you sure you want to remove these members?',
@@ -5209,8 +5243,11 @@ const translations = {
             removeMemberPrompt: ({memberName}: RemoveMemberPromptParams) => `Are you sure you want to remove ${memberName}?`,
             removeMemberTitle: 'Remove member',
             transferOwner: 'Transfer owner',
+            // @context Bulk action to change multiple users’ role to member.
             makeMember: 'Make member',
+            // @context Bulk action to grant admin role to multiple users.
             makeAdmin: 'Make admin',
+            // @context Bulk action to grant auditor role to multiple users.
             makeAuditor: 'Make auditor',
             selectAll: 'Select all',
             error: {
@@ -5243,15 +5280,19 @@ const translations = {
                 findMember: 'Find member',
                 chooseCardType: 'Choose a card type',
                 physicalCard: 'Physical card',
+                // @context Description of a physical corporate card.
                 physicalCardDescription: 'Great for the frequent spender',
                 virtualCard: 'Virtual card',
+                // @context Description of a virtual card.
                 virtualCardDescription: 'Instant and flexible',
                 chooseLimitType: 'Choose a limit type',
                 smartLimit: 'Smart Limit',
                 smartLimitDescription: 'Spend up to a certain amount before requiring approval',
                 monthly: 'Monthly',
+                // @context Describes a card with a monthly spending cap.
                 monthlyDescription: 'Spend up to a certain amount per month',
                 fixedAmount: 'Fixed amount',
+                // @context Describes a card allowing a single purchase up to a fixed amount.
                 fixedAmountDescription: 'Spend up to a certain amount once',
                 setLimit: 'Set a limit',
                 cardLimitError: 'Please enter an amount less than $21,474,836',
@@ -5343,6 +5384,7 @@ const translations = {
             taxes: 'Taxes',
             imported: 'Imported',
             notImported: 'Not imported',
+            // @context Mapping label indicating imported items appear as a single category.
             importAsCategory: 'Imported as categories',
             importTypes: {
                 [CONST.INTEGRATION_ENTITY_MAP_TYPES.IMPORTED]: 'Imported',
@@ -5456,6 +5498,7 @@ const translations = {
                             return 'Importing taxes';
                         case 'netSuiteSyncImportItems':
                             return 'Importing items';
+                        // @context Workflow stage representing data import from NetSuite.    
                         case 'netSuiteSyncData':
                             return 'Importing data into Expensify';
                         case 'netSuiteSyncAccounts':
@@ -5464,6 +5507,7 @@ const translations = {
                             return 'Syncing currencies';
                         case 'netSuiteSyncCategories':
                             return 'Syncing categories';
+                        // @context Workflow stage representing import of data as report fields.
                         case 'netSuiteSyncReportFields':
                             return 'Importing data as Expensify report fields';
                         case 'netSuiteSyncTags':
@@ -5566,6 +5610,7 @@ const translations = {
             inviteNoMembersError: 'Please select at least one member to invite',
             joinRequest: ({user, workspaceName}: {user: string; workspaceName: string}) => `${user} requested to join ${workspaceName}`,
         },
+        // @context Label for a monetary rate per distance unit.
         distanceRates: {
             oopsNotSoFast: 'Oops! Not so fast...',
             workspaceNeeds: 'A workspace needs at least one enabled distance rate.',
@@ -5593,8 +5638,10 @@ const translations = {
             taxFeatureNotEnabledMessage:
                 '<muted-text>Taxes must be enabled on the workspace to use this feature. Head over to <a href="#">More features</a> to make that change.</muted-text>',
             deleteDistanceRate: 'Delete distance rate',
+            // @context Confirmation message for deleting multiple distance rates.
             areYouSureDelete: () => ({
                 one: 'Are you sure you want to delete this rate?',
+                // @context Confirmation message for deleting multiple distance rates.
                 other: 'Are you sure you want to delete these rates?',
             }),
             errors: {
@@ -5622,10 +5669,12 @@ const translations = {
         bankAccount: {
             continueWithSetup: 'Continue setup',
             youAreAlmostDone: "You're almost done setting up your bank account, which will let you issue corporate cards, reimburse expenses, collect invoices, and pay bills.",
+            // @context CTA encouraging the user to simplify how payments are handled.
             streamlinePayments: 'Streamline payments',
             connectBankAccountNote: "Note: Personal bank accounts can't be used for payments on workspaces.",
             oneMoreThing: 'One more thing!',
             allSet: "You're all set!",
+            // @context Description for bank accounts that also have associated corporate cards.
             accountDescriptionWithCards: 'This bank account will be used to issue corporate cards, reimburse expenses, collect invoices, and pay bills.',
             letsFinishInChat: "Let's finish in chat!",
             finishInChat: 'Finish in chat',
@@ -5685,6 +5734,7 @@ const translations = {
         },
         exportAgainModal: {
             title: 'Careful!',
+            // @context Confirmation prompt asking whether to run an export process again; “again” means repeating the same export.
             description: ({reportName, connectionName}: ExportAgainModalDescriptionParams) =>
                 `The following reports have already been exported to ${CONST.POLICY.CONNECTIONS.NAME_USER_FRIENDLY[connectionName]}:\n\n${reportName}\n\nAre you sure you want to export them again?`,
             confirmText: 'Yes, export again',
@@ -5734,6 +5784,7 @@ const translations = {
                     `<muted-text>GL codes are only available on the Control plan, starting at <strong>${formattedPrice}</strong> ${hasTeam2025Pricing ? `per member per month.` : `per active member per month.`}</muted-text>`,
             },
             glAndPayrollCodes: {
+                // @context Refers to accounting codes for general ledger and payroll; both are common accounting nouns.
                 title: 'GL & Payroll codes',
                 description: `Add GL & Payroll codes to your categories for easy export of expenses to your accounting and payroll systems.`,
                 onlyAvailableOnPlan: ({formattedPrice, hasTeam2025Pricing}: {formattedPrice: string; hasTeam2025Pricing: boolean}) =>
@@ -5778,6 +5829,7 @@ const translations = {
             },
             multiLevelTags: {
                 title: 'Multi-level tags',
+                // @context Describes the multi-level tagging feature in upgrade/paywall copy.
                 description:
                     'Multi-Level Tags help you track expenses with greater precision. Assign multiple tags to each line item—such as department, client, or cost center—to capture the full context of every expense. This enables more detailed reporting, approval workflows, and accounting exports.',
                 onlyAvailableOnPlan: ({formattedPrice, hasTeam2025Pricing}: {formattedPrice: string; hasTeam2025Pricing: boolean}) =>
@@ -5872,6 +5924,7 @@ const translations = {
             workspaceOwnerWillNeedToAddOrUpdatePaymentCard: ({workspaceOwnerName}: WorkspaceOwnerWillNeedToAddOrUpdatePaymentCardParams) =>
                 `Workspace owner, ${workspaceOwnerName} will need to add or update the payment card on file to unlock new workspace activity.`,
             youWillNeedToAddOrUpdatePaymentCard: "You'll need to add or update the payment card on file to unlock new workspace activity.",
+            // @context Notice explaining that adding a payment card will unlock restricted actions; keep a neutral, non-exclamatory tone.
             addPaymentCardToUnlock: 'Add a payment card to unlock!',
             addPaymentCardToContinueUsingWorkspace: 'Add a payment card to continue using this workspace',
             pleaseReachOutToYourWorkspaceAdmin: 'Please reach out to your workspace admin for any questions.',
@@ -5965,12 +6018,14 @@ const translations = {
                     expense: 'Individual expense',
                     expenseSubtitle: 'Flag expense amounts by category. This rule overrides the general workspace rule for max expense amount.',
                     daily: 'Category total',
+                    // @context Subtitle explaining that the rule applies to the total daily spend per category for each expense report.
                     dailySubtitle: 'Flag total category spend per expense report.',
                 },
                 requireReceiptsOver: 'Require receipts over',
                 requireReceiptsOverList: {
                     default: ({defaultAmount}: DefaultAmountParams) => `${defaultAmount} ${CONST.DOT_SEPARATOR} Default`,
                     never: 'Never require receipts',
+                    // @context Option label meaning receipts are always required.
                     always: 'Always require receipts',
                 },
                 defaultTaxRate: 'Default tax rate',
@@ -6042,6 +6097,7 @@ const translations = {
         createRoom: 'Create room',
         roomAlreadyExistsError: 'A room with this name already exists',
         roomNameReservedError: ({reservedName}: RoomNameReservedErrorParams) => `${reservedName} is a default room on all workspaces. Please choose another name.`,
+        // @context Validation message for chat room names; allowed characters are lowercase letters, digits, and hyphens only.
         roomNameInvalidError: 'Room names can only include lowercase letters, numbers, and hyphens',
         pleaseEnterRoomName: 'Please enter a room name',
         pleaseSelectWorkspace: 'Please select a workspace',
@@ -6479,6 +6535,7 @@ const translations = {
         title: 'Uh-oh, something went wrong!',
         body: {
             helpTextMobile: 'Please close and reopen the app, or switch to',
+            // @context Completes the help text by offering to switch to the web version.
             helpTextWeb: 'web.',
             helpTextConcierge: 'If the problem persists, reach out to',
         },
@@ -6535,6 +6592,7 @@ const translations = {
         togglefullscreen: 'Toggle Full Screen',
         historyMenu: 'History',
         back: 'Back',
+        // @context “Forward” refers to forward navigation in the history stack (opposite of Back), not sending or transferring.
         forward: 'Forward',
         windowMenu: 'Window',
         minimize: 'Minimize',
@@ -6577,6 +6635,7 @@ const translations = {
             emptyReportConfirmationPromptLink: 'Reports',
             genericWorkspaceName: 'this workspace',
         },
+        // @context “Report” refers to an expense report object, not a chat or discussion thread.
         genericCreateReportFailureMessage: 'Unexpected error creating this chat. Please try again later.',
         genericAddCommentFailureMessage: 'Unexpected error posting the comment. Please try again later.',
         genericUpdateReportFieldFailureMessage: 'Unexpected error updating the field. Please try again later.',
@@ -6631,6 +6690,7 @@ const translations = {
                 takeControl: `took control`,
                 integrationSyncFailed: ({label, errorMessage, workspaceAccountingLink}: IntegrationSyncFailedParams) =>
                     `there was a problem syncing with ${label}${errorMessage ? ` ("${errorMessage}")` : ''}. Please fix the issue in <a href="${workspaceAccountingLink}">workspace settings</a>.`,
+               // @context Activity log entry indicating a user was added with a specific workspace role.
                 addEmployee: ({email, role}: AddEmployeeParams) => `added ${email} as ${role === 'member' ? 'a' : 'an'} ${role}`,
                 updateRole: ({email, currentRole, newRole}: UpdateRoleParams) => `updated the role of ${email} to ${newRole} (previously ${currentRole})`,
                 updatedCustomField1: ({email, previousValue, newValue}: UpdatedCustomFieldParams) => {
@@ -6660,6 +6720,7 @@ const translations = {
     },
     chronos: {
         oooEventSummaryFullDay: ({summary, dayCount, date}: OOOEventSummaryFullDayParams) => `${summary} for ${dayCount} ${dayCount === 1 ? 'day' : 'days'} until ${date}`,
+        // @context Summary line for a partial-day out-of-office event using a predefined time period label followed by a date.
         oooEventSummaryPartialDay: ({summary, timePeriod, date}: OOOEventSummaryPartialDayParams) => `${summary} from ${timePeriod} on ${date}`,
     },
     footer: {
@@ -6763,7 +6824,9 @@ const translations = {
         share: 'Share it with my accountant',
         nothing: 'Nothing for now',
     },
+    // @context “Principal” refers to the school principal (head of school); this field collects the first name.
     teachersUnitePage: {
+        // @context Title for a program. Keep it as proper noun or localized title 'Enseignants unis'. Teachers Unite → Enseignants unis
         teachersUnite: 'Teachers Unite',
         joinExpensifyOrg:
             'Join Expensify.org in eliminating injustice around the world. The current "Teachers Unite" campaign supports educators everywhere by splitting the costs of essential school supplies.',
@@ -6773,8 +6836,11 @@ const translations = {
         introSchoolPrincipal: 'Intro to your school principal',
         schoolPrincipalVerifyExpense:
             'Expensify.org splits the cost of essential school supplies so that students from low-income households can have a better learning experience. Your principal will be asked to verify your expenses.',
+        // @context “Principal” refers to the school principal (head of school); this field collects the first name.
         principalFirstName: 'Principal first name',
+        // @context Last name of the school principal (head of school).
         principalLastName: 'Principal last name',
+        // @context Work email address of the school principal (head of school).
         principalWorkEmail: 'Principal work email',
         updateYourEmail: 'Update your email address',
         updateEmail: 'Update email address',
@@ -6798,7 +6864,9 @@ const translations = {
         deleteWaypointConfirmation: 'Are you sure you want to delete this waypoint?',
         address: 'Address',
         waypointDescription: {
+            // @context Map waypoint label for the starting point of a route or trip.
             start: 'Start',
+            // @context Map waypoint label for the stopping point or arrival of a route or trip.
             stop: 'Stop',
         },
         mapPending: {
@@ -6813,6 +6881,7 @@ const translations = {
         },
     },
     reportCardLostOrDamaged: {
+        // @context Screen title for reporting a lost or damaged physical payment card.
         screenTitle: 'Report card lost or damaged',
         nextButtonLabel: 'Next',
         reasonTitle: 'Why do you need a new card?',
@@ -6962,8 +7031,10 @@ const translations = {
             `<muted-text-label>Receipt pending due to broken bank connection. Please resolve in <a href="${workspaceCompanyCardRoute}">Company cards</a>.</muted-text-label>`,
         memberBrokenConnectionError: 'Receipt pending due to broken bank connection. Please ask a workspace admin to resolve.',
         markAsCashToIgnore: 'Mark as cash to ignore and request payment.',
+        // @context Error shown when SmartScan fails to read a receipt; may include guidance to enter details manually.
         smartscanFailed: ({canEdit = true}) => `Receipt scanning failed.${canEdit ? ' Enter details manually.' : ''}`,
         receiptGeneratedWithAI: 'Potential AI-generated receipt',
+        // @context Violation message shown when required tag levels have not been completed.
         someTagLevelsRequired: ({tagName}: ViolationsTagOutOfPolicyParams = {}) => `Missing ${tagName ?? 'Tag'}`,
         tagOutOfPolicy: ({tagName}: ViolationsTagOutOfPolicyParams = {}) => `${tagName ?? 'Tag'} no longer valid`,
         taxAmountChanged: 'Tax amount was modified',
@@ -6999,7 +7070,8 @@ const translations = {
         play: 'Play',
         pause: 'Pause',
         fullscreen: 'Fullscreen',
-        playbackSpeed: 'Playback speed',
+        playbackSpeed: 'Playback speed',$
+        // @context Video player control to expand or enlarge the video view.
         expand: 'Expand',
         mute: 'Mute',
         unmute: 'Unmute',
